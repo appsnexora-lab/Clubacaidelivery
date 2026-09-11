@@ -1,0 +1,174 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Outfit", var(--font-sans);
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  
+  --color-brand-purple: #4c1d95; /* Roxo principal */
+  --color-brand-purple-light: #6d28d9;
+  --color-brand-purple-dark: #2e1065;
+  --color-brand-pistachio: #84cc16; /* Verde pistache */
+  --color-brand-pistachio-light: #bef264;
+  --color-brand-pistachio-dark: #4d7c0f;
+  --color-brand-charcoal: #111827; /* Preto discreto */
+}
+
+/* Custom scrollbars for a premium feel */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f3f4f6;
+}
+::-webkit-scrollbar-thumb {
+  background: #d1d5db;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #4c1d95;
+}
+
+img {
+  referrer-policy: no-referrer;
+}
+
+/* Hide scrollbars utility */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* === RESPONSIVE TUNING FOR PRODUCT CARD ELEMENTS UNDER THE CATALOG FEED === */
+#menu-catalog-feed .group {
+  line-height: 1.2 !important;
+}
+
+#menu-catalog-feed h3,
+#menu-catalog-feed p,
+#menu-catalog-feed span,
+#menu-catalog-feed button {
+  line-height: 1.2 !important;
+}
+
+/* Base styles for inner card layout and add button */
+#menu-catalog-feed .product-card-inner {
+  display: flex !important;
+  flex-direction: column !important;
+  height: 100% !important;
+}
+
+#menu-catalog-feed button[id^="btn-add-"] {
+  margin-top: auto !important;
+}
+
+/* Dynamically adjust font sizes and padding on ultra-compact mobile screens */
+@media (max-width: 440px) {
+  #menu-catalog-feed .group {
+    padding: 0.5rem !important;
+    gap: 0.5rem !important;
+    min-height: 138px !important;
+    height: auto !important;
+  }
+  
+  /* Scale image container down slightly to allocate more space for text */
+  #menu-catalog-feed .group > div:last-child {
+    width: 82px !important;
+    height: 82px !important;
+  }
+
+  /* Make product name adaptively scale so it doesn't wrap awkwardly or get cut */
+  #menu-catalog-feed h3 {
+    font-size: 11px !important;
+    letter-spacing: -0.01em !important;
+  }
+
+  /* Make descriptions compact */
+  #menu-catalog-feed p {
+    font-size: 9.5px !important;
+  }
+
+  /* Scale the action button and keep the text completely visible */
+  #menu-catalog-feed button {
+    font-size: 8.5px !important;
+    padding-left: 0.5rem !important;
+    padding-right: 0.5rem !important;
+    letter-spacing: normal !important;
+    gap: 0.125rem !important;
+  }
+  
+  #menu-catalog-feed button span {
+    font-size: 8.5px !important;
+  }
+
+  #menu-catalog-feed button svg {
+    width: 0.7rem !important;
+    height: 0.7rem !important;
+  }
+
+  /* Scale options buttons */
+  #menu-catalog-feed button[type="button"]:not([id^="btn-add-"]) {
+    font-size: 8.5px !important;
+    padding: 0.125rem 0.35rem !important;
+  }
+
+  /* Scale the Adicionais badge */
+  #menu-catalog-feed .group span.inline-flex {
+    font-size: 7px !important;
+    padding: 0.1rem 0.35rem !important;
+  }
+}
+
+/* Extremely narrow mobile devices (e.g. iPhone SE first gen) */
+@media (max-width: 350px) {
+  #menu-catalog-feed .group {
+    padding: 0.375rem !important;
+    gap: 0.375rem !important;
+    min-height: 130px !important;
+    height: auto !important;
+  }
+
+  #menu-catalog-feed .group > div:last-child {
+    width: 70px !important;
+    height: 70px !important;
+  }
+
+  #menu-catalog-feed h3 {
+    font-size: 10px !important;
+  }
+
+  #menu-catalog-feed p {
+    font-size: 9px !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical;
+  }
+
+  /* Scale the Adicionais badge down even more */
+  #menu-catalog-feed .group span.inline-flex {
+    font-size: 6.5px !important;
+    padding: 0.05rem 0.25rem !important;
+  }
+
+  #menu-catalog-feed button {
+    font-size: 8px !important;
+    padding-left: 0.375rem !important;
+    padding-right: 0.375rem !important;
+    border-radius: 0.5rem !important;
+  }
+
+  #menu-catalog-feed button span {
+    font-size: 8px !important;
+  }
+
+  /* Ensure options are extra compact */
+  #menu-catalog-feed span {
+    font-size: 8px !important;
+  }
+}
+

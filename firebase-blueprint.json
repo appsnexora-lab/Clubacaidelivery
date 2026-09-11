@@ -1,0 +1,248 @@
+{
+  "entities": {
+    "Product": {
+      "title": "Product",
+      "description": "Product sold in the store",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "category": { "type": "string" },
+        "image": { "type": "string" },
+        "sizes": { "type": "array" },
+        "additions": { "type": "array" },
+        "active": { "type": "boolean" },
+        "isCombo": { "type": "boolean" },
+        "comboItems": { "type": "array" }
+      },
+      "required": ["id", "name", "category"]
+    },
+    "VitrineItem": {
+      "title": "VitrineItem",
+      "description": "Carousel banner item shown on homepage",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "subtitle": { "type": "string" },
+        "image": { "type": "string" },
+        "link": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "title"]
+    },
+    "SocialProof": {
+      "title": "SocialProof",
+      "description": "Social media prints and stories",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "username": { "type": "string" },
+        "avatar": { "type": "string" },
+        "text": { "type": "string" },
+        "image": { "type": "string" },
+        "storyImage": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "username"]
+    },
+    "PromoWeekDay": {
+      "title": "PromoWeekDay",
+      "description": "Daily store promotion configuration",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "dayName": { "type": "string" },
+        "dayLabel": { "type": "string" },
+        "active": { "type": "boolean" },
+        "title": { "type": "string" },
+        "description": { "type": "string" },
+        "icon": { "type": "string" },
+        "type": { "type": "string" },
+        "mondayDiscountPercent": { "type": "number" },
+        "tuesdayToppings": { "type": "array" },
+        "thursdayBuySize": { "type": "string" },
+        "thursdayGetSize": { "type": "string" }
+      },
+      "required": ["id", "dayName", "dayLabel", "active"]
+    },
+    "CompanyInfo": {
+      "title": "CompanyInfo",
+      "description": "General store metadata, opening hours, etc.",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "logo": { "type": "string" },
+        "bannerImage": { "type": "string" },
+        "phone": { "type": "string" },
+        "address": { "type": "string" },
+        "deliveryTime": { "type": "string" },
+        "minOrder": { "type": "number" },
+        "deliveryFee": { "type": "number" },
+        "paymentMethods": { "type": "array" },
+        "openHours": { "type": "string" },
+        "whatsappUrl": { "type": "string" },
+        "instagramUrl": { "type": "string" },
+        "hasLoyalty": { "type": "boolean" },
+        "loyaltyPointsPerReal": { "type": "number" },
+        "loyaltyPointsToReward": { "type": "number" },
+        "loyaltyRewardValue": { "type": "number" },
+        "loyaltyMaxPoints": { "type": "number" },
+        "hasReferral": { "type": "boolean" },
+        "referralPoints": { "type": "number" }
+      }
+    },
+    "LoyaltyUser": {
+      "title": "LoyaltyUser",
+      "description": "Loyalty program client data",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "phone": { "type": "string" },
+        "points": { "type": "number" },
+        "history": { "type": "array" }
+      },
+      "required": ["id", "phone", "points"]
+    },
+    "OrderHistory": {
+      "title": "OrderHistory",
+      "description": "Order records",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "customerId": { "type": "string" },
+        "customerName": { "type": "string" },
+        "customerPhone": { "type": "string" },
+        "items": { "type": "array" },
+        "subtotal": { "type": "number" },
+        "deliveryFee": { "type": "number" },
+        "discount": { "type": "number" },
+        "total": { "type": "number" },
+        "paymentMethod": { "type": "string" },
+        "changeFor": { "type": "number" },
+        "status": { "type": "string" },
+        "createdAt": { "type": "string" },
+        "address": { "type": "object" },
+        "paymentInfo": { "type": "object" }
+      },
+      "required": ["id", "total", "status", "createdAt"]
+    },
+    "Category": {
+      "title": "Category",
+      "description": "Product categories",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "description": { "type": "string" }
+      },
+      "required": ["id", "name"]
+    },
+    "Coupon": {
+      "title": "Coupon",
+      "description": "Promo coupon definition",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "code": { "type": "string" },
+        "discountType": { "type": "string" },
+        "value": { "type": "number" },
+        "usageLimit": { "type": "number" },
+        "usageCount": { "type": "number" },
+        "expirationDate": { "type": "string" },
+        "active": { "type": "boolean" }
+      },
+      "required": ["id", "code", "discountType", "value", "active"]
+    },
+    "ClientUser": {
+      "title": "ClientUser",
+      "description": "Registered clients profiles",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "address": { "type": "object" },
+        "points": { "type": "number" },
+        "createdAt": { "type": "string" },
+        "referredBy": { "type": "string" }
+      },
+      "required": ["id", "name", "phone"]
+    },
+    "AppletNotification": {
+      "title": "AppletNotification",
+      "description": "In-app system notifications",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "body": { "type": "string" },
+        "read": { "type": "boolean" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["id", "title", "body", "createdAt"]
+    },
+    "AdminCredentials": {
+      "title": "AdminCredentials",
+      "description": "Administrator login credentials",
+      "type": "object",
+      "properties": {
+        "email": { "type": "string" },
+        "password": { "type": "string" }
+      },
+      "required": ["email", "password"]
+    }
+  },
+  "firestore": {
+    "products": {
+      "schema": "Product",
+      "description": "Collection of products available in the catalog"
+    },
+    "vitrine": {
+      "schema": "VitrineItem",
+      "description": "Collection of homepage showcase banners"
+    },
+    "social_proofs": {
+      "schema": "SocialProof",
+      "description": "Collection of prints & stories posted by users"
+    },
+    "promos": {
+      "schema": "PromoWeekDay",
+      "description": "Collection of weekday automatic promotion settings"
+    },
+    "company_config": {
+      "schema": "CompanyInfo",
+      "description": "Collection containing a single document with metadata about the store"
+    },
+    "loyalty_users": {
+      "schema": "LoyaltyUser",
+      "description": "Collection tracking loyalty program participant user scores"
+    },
+    "orders": {
+      "schema": "OrderHistory",
+      "description": "Collection containing all store orders and sales logs"
+    },
+    "categories": {
+      "schema": "Category",
+      "description": "Collection of all available item categories"
+    },
+    "coupons": {
+      "schema": "Coupon",
+      "description": "Collection of active discount coupons"
+    },
+    "client_users": {
+      "schema": "ClientUser",
+      "description": "Collection of client user details"
+    },
+    "notifications": {
+      "schema": "AppletNotification",
+      "description": "Collection of system messages and updates"
+    },
+    "admin_config": {
+      "schema": "AdminCredentials",
+      "description": "Collection containing the administrator login credentials"
+    }
+  }
+}

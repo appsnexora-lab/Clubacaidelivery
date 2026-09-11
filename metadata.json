@@ -1,0 +1,6 @@
+{
+  "name": "Açaí Delivery",
+  "description": "Aplicativo completo, moderno e premium para açaíteria com vitrine, catálogo interativo, carrinho de compras, programa de fidelidade, promoções diárias e painel administrativo.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
