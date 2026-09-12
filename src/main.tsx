@@ -8,7 +8,7 @@ import { ErrorBoundary } from './components/ErrorBoundary';
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker
-      .register('/sw.js')
+      .register('/sw.js?v=3')
       .then((registration) => {
         // Trigger update to check for new service worker and refresh icon cache
         registration.update().catch(() => {});

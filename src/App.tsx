@@ -5,7 +5,7 @@ import {
   CheckCircle, Truck, Star, Sparkles, Plus, ArrowRight, UserPlus, Search,
   ChevronLeft, ChevronRight, MessageSquare, Check, RotateCcw, Shield,
   ExternalLink, User, CheckCircle2, ChevronDown, Flame, ShoppingCart, X, Trash2, Pencil, Upload,
-  Bell, BellRing, FileText
+  Bell, BellRing, FileText, Download
 } from "lucide-react";
 import html2canvas from "html2canvas";
 import { jsPDF } from "jspdf";
@@ -1731,6 +1731,17 @@ export default function App() {
                 <span>Entrar</span>
               </button>
             )}
+
+            {/* Install App Button */}
+            <button
+              type="button"
+              onClick={() => window.dispatchEvent(new CustomEvent('open-pwa-install'))}
+              className="p-1.5 rounded-lg border border-purple-200 bg-purple-50 hover:bg-purple-100 text-purple-900 transition-all cursor-pointer flex items-center gap-1 shadow-xs"
+              title="Instalar App na tela inicial"
+            >
+              <Download className="w-3.5 h-3.5 text-purple-700" />
+              <span className="hidden sm:inline text-[9px] font-bold text-purple-900">Instalar</span>
+            </button>
 
             {/* Visual Notifications Bell */}
             <div className="relative">

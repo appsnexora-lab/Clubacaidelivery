@@ -1,45 +1,45 @@
-const CACHE_NAME = 'acai-delivery-v5-official-icons';
+const CACHE_NAME = 'acai-delivery-v9-exact-image-v3';
 const STATIC_ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
+  '/manifest.json?v=3',
+  '/manifest.json?v=2',
   '/manifest.webmanifest',
+  '/favicon-v3.ico',
+  '/favicon-v2.ico',
   '/favicon.ico',
-  '/favicon-16x16.png',
-  '/favicon-32x32.png',
-  '/icon-48.png',
-  '/icon-72.png',
-  '/icon-96.png',
-  '/icon-128.png',
-  '/icon-144.png',
-  '/icon-152.png',
-  '/icon-180.png',
+  '/favicon-16x16-v3.png',
+  '/favicon-32x32-v3.png',
+  '/icon-48-v3.png',
+  '/icon-72-v3.png',
+  '/icon-96-v3.png',
+  '/icon-128-v3.png',
+  '/icon-144-v3.png',
+  '/icon-152-v3.png',
+  '/icon-192-v3.png',
+  '/icon-384-v3.png',
+  '/icon-512-v3.png',
+  '/icon-maskable-192-v3.png',
+  '/icon-maskable-512-v3.png',
+  '/apple-touch-icon-v3.png',
+  '/apple-touch-icon-192-v3.png',
   '/icon-192.png',
-  '/icon-384.png',
   '/icon-512.png',
-  '/icon-maskable-192.png',
-  '/icon-maskable-512.png',
-  '/pwa-48x48.png',
-  '/pwa-72x72.png',
-  '/pwa-96x96.png',
-  '/pwa-128x128.png',
-  '/pwa-144x144.png',
-  '/pwa-152x152.png',
-  '/pwa-180x180.png',
-  '/pwa-192x192.png',
-  '/pwa-384x384.png',
-  '/pwa-512x512.png',
-  '/pwa-maskable-192x192.png',
-  '/pwa-maskable-512x512.png',
-  '/apple-touch-icon.png',
-  '/apple-touch-icon-180x180.png'
+  '/apple-touch-icon.png'
 ];
 
 // Install Event
 self.addEventListener('install', (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
-      return cache.addAll(STATIC_ASSETS);
+      return Promise.all(
+        STATIC_ASSETS.map((asset) =>
+          cache.add(asset).catch((err) => {
+            console.warn('[SW] Aviso no cache inicial:', asset, err);
+          })
+        )
+      );
     }).then(() => self.skipWaiting())
   );
 });

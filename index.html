@@ -12,36 +12,50 @@
     <meta name="mobile-web-app-capable" content="yes" />
     <meta name="application-name" content="Açaí Delivery" />
     
-    <!-- iOS / Apple Meta Tags -->
+    <!-- High-Resolution Apple Touch & Android Shortcut Icons (FIRST in head so Chrome & Android prioritize high-res graphics) -->
+    <link rel="apple-touch-icon" href="/icon-192-v3.png" />
+    <link rel="apple-touch-icon" sizes="192x192" href="/icon-192-v3.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-v3.png" />
+    <link rel="apple-touch-icon" sizes="512x512" href="/icon-512-v3.png" />
+    <link rel="apple-touch-icon-precomposed" href="/icon-192-v3.png" />
+
+    <!-- Standard Favicons (High-Res first so Chrome Android launcher picks 192px instead of 16px) -->
+    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192-v3.png" />
+    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512-v3.png" />
+    <link rel="icon" type="image/png" sizes="96x96" href="/icon-96-v3.png" />
+    <link rel="icon" type="image/png" sizes="48x48" href="/icon-48-v3.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-v3.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-v3.png" />
+    <link rel="icon" type="image/x-icon" href="/favicon-v3.ico" />
+    <link rel="shortcut icon" href="/favicon-v3.ico" />
+
+    <!-- iOS Specific Configuration -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="default" />
-    <meta name="apple-mobile-web-app-title" content="Açaí" />
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="/icon-152.png" />
-    <link rel="apple-touch-icon" sizes="120x120" href="/icon-128.png" />
-    <link rel="apple-touch-icon" sizes="76x76" href="/icon-72.png" />
-    
-    <!-- Favicons & Icons -->
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-    <link rel="icon" type="image/png" sizes="48x48" href="/icon-48.png" />
-    <link rel="icon" type="image/png" sizes="96x96" href="/icon-96.png" />
-    <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png" />
-    <link rel="icon" type="image/png" sizes="512x512" href="/icon-512.png" />
+    <meta name="apple-mobile-web-app-title" content="Açaí Delivery" />
     
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Açaí Delivery" />
     <meta property="og:description" content="Peça seu açaí de forma rápida e fácil." />
-    <meta property="og:image" content="/icon-512.png" />
+    <meta property="og:image" content="/icon-512-v3.png" />
     <meta property="og:type" content="website" />
 
-    <!-- Web App Manifest -->
-    <link rel="manifest" href="/manifest.json" />
+    <!-- Web App Manifest (Cache-busted v3) -->
+    <link rel="manifest" href="/manifest.json?v=3" />
   </head>
   <body class="bg-purple-950 text-white antialiased">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js?v=3', { scope: '/' })
+            .then((registration) => {
+              registration.update().catch(() => {});
+            })
+            .catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>
