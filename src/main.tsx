@@ -10,6 +10,8 @@ if ('serviceWorker' in navigator) {
     navigator.serviceWorker
       .register('/sw.js')
       .then((registration) => {
+        // Trigger update to check for new service worker and refresh icon cache
+        registration.update().catch(() => {});
         console.log('Açaí Delivery PWA registrado com sucesso no escopo:', registration.scope);
       })
       .catch((error) => {
